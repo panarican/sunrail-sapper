@@ -5,7 +5,7 @@
 	import {quintOut} from 'svelte/easing';
     export let title = 'Schedule';
     export let sorry = 'Sorry there\'s currently no scheduled stops for this location';
-    export let schedules = [];
+    export let times = [];
 </script>
 
 <style>
@@ -32,16 +32,16 @@
 </style>
 
 <h2 transition:slide="{{delay: 200, duration: 300, easing: quintOut }}">{title}</h2>
-{#if schedules.length}
+{#if times.length}
     <table transition:fade="{{delay: 250, duration: 300}}">
         <tr>
             <th>Time</th>
             <th>Train</th>
         </tr>
-        {#each schedules as schedule, index}
+        {#each times as item, index}
             <tr transition:fade="{{delay: 500 + (index * 50), duration: 300, easing: quintOut}}"> 
-                <td>{formatTime(schedule.time)}</td>
-                <td>{schedule.train}</td>
+                <td>{formatTime(item.time)}</td>
+                <td>{item.train}</td>
             </tr>
         {/each}
     </table>

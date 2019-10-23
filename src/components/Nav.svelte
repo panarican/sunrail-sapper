@@ -1,19 +1,5 @@
 <script>
 	export let segment;
-	let links = [
-        {
-            segment: '.',
-            name: 'Home',
-        },
-        {
-			segment: 'about',
-            name: 'About',
-        },
-        {
-			segment: 'stations',
-            name: 'Stations',
-        },
-    ];
 </script>
 
 <style>
@@ -64,8 +50,10 @@
 
 <nav>
 	<ul>
-        {#each links as link}
-            <li><a class:selected={(segment === link.segment) || (segment === undefined && link.segment === ".")} rel='prefetch' href='{link.segment}'>{link.name}</a></li>
-        {/each}
+		<li><a class:selected={segment === undefined} href='.'>Home</a></li>
+		<li><a class:selected={segment === 'forms'} href='forms'>Forms</a></li>
+		<li><a class:selected={segment === 'events'} href='events'>Events</a></li>
+		<li><a class:selected={segment === 'stores'} href='stores'>Stores</a></li>
+		<li><a class:selected={segment === 'stations'} href='stations' rel='prefetch'>Stations</a></li>
 	</ul>
 </nav>

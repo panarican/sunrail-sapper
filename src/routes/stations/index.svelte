@@ -15,6 +15,7 @@
 </script>
 
 <script>
+	import Favorites from '../../components/Favorites.svelte';
 	export let stations;
 </script>
 
@@ -29,10 +30,12 @@
 	<title>Stations</title>
 </svelte:head>
 
+<Favorites />
+
 <h1>Stations</h1>
 
 <ul>
 	{#each stations as station}
-		<li><a rel='prefetch' href='stations/{station.id}'>{station.name}</a></li>
+		<li><a rel='prefetch' href='stations/{station.id}s'>{station.name}</a></li>
 	{/each}
 </ul>

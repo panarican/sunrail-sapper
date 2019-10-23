@@ -2,7 +2,7 @@
 	import {GRAPHQL_QUERY_URL} from "../_variables";
 	export async function preload({params, query}) {
 		const QUERY = `{
-			station(id:${params.slug}) {
+			station(id:${params.id}) {
 				id,
 				name,
 				details,
@@ -29,18 +29,17 @@
 <script>
 	import ScheduleTable from '../../components/ScheduleTable.svelte';
 	export let station;
-
+	const north = {
+		title: 'Northbound Schedule',
+		times: station.schedules.filter(item => item.direction_id === 1),
+	};
+	const south = {
+		title: 'Southbound Schedule',
+		times: station.schedules.filter(item => item.direction_id === 2),
+	};
 </script>
 
 <style>
-	/*
-		By default, CSS is locally scoped to the component,
-		and any unused styles are dead-code-eliminated.
-		In this page, Svelte can't know which elements are
-		going to appear inside the {{{post.html}}} block,
-		so we have to use the :global(...) modifier to target
-		all elements inside .content
-	*/
 	.content :global(h2) {
 		font-size: 1.4em;
 		font-weight: 500;
@@ -88,9 +87,9 @@
 
 <div class="schedule-tables">
 	<section>
-		<ScheduleTable title={'Northbound Schedule'} schedules={station.schedules.filter(item => item.direction_id === 1)} />
+		<ScheduleTable {...north} />
 	</section>
 	<section>
-		<ScheduleTable title={'Southbound Schedule'} schedules={station.schedules.filter(item => item.direction_id === 2)} />
+		<ScheduleTable {...south} />
 	</section>
 </div>

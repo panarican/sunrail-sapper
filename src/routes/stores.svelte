@@ -42,7 +42,7 @@
     <select multiple bind:value={$favorites}>
         {#each stations as station}
             <option value={station}>{station.name}</option>
-        {/each}}
+        {/each}
     </select>
 </form>
 

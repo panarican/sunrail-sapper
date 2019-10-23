@@ -36,6 +36,6 @@
 
 <ul>
 	{#each stations as station}
-		<li><a rel='prefetch' href='stations/{station.id}s'>{station.name}</a></li>
+		<li><a rel='prefetch' href='stations/{station.id}'>{station.name}</a></li>
 	{/each}
 </ul>
